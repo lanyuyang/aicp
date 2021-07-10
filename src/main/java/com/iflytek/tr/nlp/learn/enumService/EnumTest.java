@@ -15,6 +15,7 @@ public class EnumTest {
 
 
         // 根据code获取ErrorCodeEnum
-        System.out.println(ErrorCodeEnum.getErrorCodeEnum(222).getMsg());
+        System.out.println(ErrorCodeEnum.from(222).getMsg());
+        System.out.println(ErrorCodeEnum.from(222).toString());
     }
 }

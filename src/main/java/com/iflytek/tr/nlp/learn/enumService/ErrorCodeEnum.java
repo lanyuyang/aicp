@@ -7,7 +7,8 @@ import java.util.stream.Collectors;
 public enum ErrorCodeEnum {
     SUCCESS(new int[]{0,00,000},"成功",true),
     FAIL(new int[]{1,11,111},"失败",false),
-    EXCEPTION(new int[]{2,22,222},"异常",false);
+    EXCEPTION(new int[]{2,22,222},"异常",false),
+    UNKNOWN(new int[]{},"未知",false);
     private int[] codeArr;
     private String msg;
     private boolean isSuccess;
@@ -18,14 +19,14 @@ public enum ErrorCodeEnum {
     }
 
     public int[] getCodeArr() {
-        return codeArr;
+        return Arrays.copyOf(codeArr, codeArr.length);
     }
 
     public String getMsg() {
         return msg;
     }
 
-    public static ErrorCodeEnum getErrorCodeEnum(int code){
+    public static ErrorCodeEnum from(int code){
         for (ErrorCodeEnum codeEnum:ErrorCodeEnum.values()){
             int[] codeArr = codeEnum.getCodeArr();
             for (int i=0; i< codeArr.length; i++){
@@ -33,8 +34,7 @@ public enum ErrorCodeEnum {
                     return codeEnum;
                 }
             }
-
         }
-        return null;
+        return UNKNOWN;
     }
 }
