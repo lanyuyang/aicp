@@ -50,4 +50,20 @@ public class ListTest {
         System.out.println(JSON.toJSON(students));
 
     }
+
+    public static void covert(){
+        int[] array = {1, 2, 5, 5, 5, 5, 6, 6, 7, 2, 9, 2};
+
+        /*int[]转list*/
+        //方法一：需要导入apache commons-lang3  jar
+//        List<Integer> list = Arrays.asList(ArrayUtils.toObject(array));
+        //方法二：java8及以上版本
+        List<Integer> list = Arrays.stream(array).boxed().collect(Collectors.toList());
+
+        /*list转int[]*/
+        //方法一：
+        Integer[] intArr =  list.toArray(new Integer[list.size()]);
+        //方法二：java8及以上版本
+        int[] intArr1 =  list.stream().mapToInt(Integer::valueOf).toArray();
+    }
 }
