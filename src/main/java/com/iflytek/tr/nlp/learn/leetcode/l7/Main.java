@@ -33,6 +33,8 @@ package com.iflytek.tr.nlp.learn.leetcode.l7;
 public class Main {
     public static void main(String[] args) {
         reverse(1534236469);
+        char c = 1;
+        float f = 1.01f;
     }
     public static int reverse(int x) {
         boolean isRight = true;
